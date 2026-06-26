@@ -1,0 +1,101 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "ollama-lookup",
+  "title": "Ollama Lookup",
+  "description": "Explain selected text with an Ollama model running on your machine.",
+  "icon": "icon.png",
+  "author": "your-raycast-username",
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "explain-selection",
+      "title": "Explain Selected Text",
+      "subtitle": "Ollama",
+      "description": "Capture the current selection and explain it with Ollama.",
+      "mode": "no-view"
+    },
+    {
+      "name": "explain-text",
+      "title": "Explain Text",
+      "subtitle": "Ollama",
+      "description": "Explain text with Ollama. If no argument is provided, the clipboard is used.",
+      "mode": "view",
+      "arguments": [
+        {
+          "name": "text",
+          "placeholder": "Text to explain",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "preferences": [
+        {
+          "name": "model",
+          "title": "Ollama Model",
+          "description": "The Ollama model to use.",
+          "type": "textfield",
+          "required": true,
+          "default": "qwen3:14b"
+        },
+        {
+          "name": "baseUrl",
+          "title": "Ollama Base URL",
+          "description": "The Ollama server URL.",
+          "type": "textfield",
+          "required": true,
+          "default": "http://127.0.0.1:11434"
+        },
+        {
+          "name": "domain",
+          "title": "Default Domain",
+          "description": "Bias the explanation toward a professional domain.",
+          "type": "dropdown",
+          "required": true,
+          "default": "auto",
+          "data": [
+            {
+              "title": "Auto",
+              "value": "auto"
+            },
+            {
+              "title": "Programming",
+              "value": "programming"
+            },
+            {
+              "title": "Medicine",
+              "value": "medicine"
+            },
+            {
+              "title": "Finance",
+              "value": "finance"
+            },
+            {
+              "title": "Academic Paper",
+              "value": "academic"
+            },
+            {
+              "title": "Plain English",
+              "value": "english"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.100.0"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^2.0.4",
+    "@types/node": "^22.13.10",
+    "eslint": "^9.21.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2"
+  },
+  "scripts": {
+    "dev": "ray develop",
+    "build": "ray build",
+    "lint": "ray lint",
+    "fix-lint": "ray lint --fix"
+  }
+}
